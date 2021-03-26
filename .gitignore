@@ -29,6 +29,9 @@ ExportedObj/
 *.pidb.meta
 *.pdb.meta
 
+# Meta files but not source file with postfix. which is everything but a folder
+!*.*.meta
+
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
 
