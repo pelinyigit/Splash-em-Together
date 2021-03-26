@@ -59,11 +59,11 @@ public class PlayerController : MonoBehaviour
 
             if (currentVector.x < 0 )
             {
-                EventManager.OnRightTilled?.Invoke();
+                EventManager.OnRightTilt?.Invoke();
             }
             if (currentVector.x > 0 )
             {
-                EventManager.OnLeftTilled?.Invoke();
+                EventManager.OnLeftTilt?.Invoke();
             }
 
             Debug.Log(currentVector.x);
