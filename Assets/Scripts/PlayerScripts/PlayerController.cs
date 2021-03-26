@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         body = GetComponent<Rigidbody>();
+       
     }
     private void Update()
     {
@@ -53,29 +55,21 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             Vector3 currentVector = startMousePosition - Input.mousePosition;
+            startMousePosition = Input.mousePosition;
 
-           
-            endMousePosition = Input.mousePosition;
+            if (currentVector.x < 0 )
+            {
+                EventManager.OnRightTilled?.Invoke();
+            }
+            if (currentVector.x > 0 )
+            {
+                EventManager.OnLeftTilled?.Invoke();
+            }
+
             Debug.Log(currentVector.x);
-            if(currentVector.x < -5 && tiltState != isTilt.leftTilt)
-            {
-                rideController.SetInteger("isTilt", (int)isTilt.leftTilt);
-                tiltState = isTilt.leftTilt;
-            }
-            else if (currentVector.x >5 && tiltState != isTilt.rightTilt)
-            {
-                rideController.SetInteger("isTilt", (int)isTilt.rightTilt);
-                tiltState = isTilt.rightTilt;
-            }
-            else
-            {
-                rideController.SetInteger("isTilt", (int)isTilt.defaultPosition);
-                tiltState = isTilt.defaultPosition;
-            }
-
+           
             currentVector = new Vector3(currentVector.x, 0, 0);
-
-            
+   
             Vector3 moveForce = Vector3.ClampMagnitude(currentVector, clampDelta);
 
 
