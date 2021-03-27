@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
-    
+
     enum isTilt
     {
         leftTilt = -1,
@@ -30,16 +30,16 @@ public class PlayerController : MonoBehaviour
 
     public Animator rideController;
 
-    private isTilt tiltState =0;
+    private isTilt tiltState = 0;
 
     private void Awake()
     {
         body = GetComponent<Rigidbody>();
-       
+
     }
     private void Update()
     {
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x,-bounds, bounds),transform.position.y,transform.position.z); 
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -bounds, bounds), transform.position.y, transform.position.z);
 
     }
 
@@ -57,28 +57,26 @@ public class PlayerController : MonoBehaviour
             Vector3 currentVector = startMousePosition - Input.mousePosition;
             startMousePosition = Input.mousePosition;
 
-            if (currentVector.x < 0 )
+            if (currentVector.x < 0)
             {
                 EventManager.OnRightTilt?.Invoke();
             }
-            if (currentVector.x > 0 )
+            if (currentVector.x > 0)
             {
                 EventManager.OnLeftTilt?.Invoke();
             }
 
             Debug.Log(currentVector.x);
-           
+
             currentVector = new Vector3(currentVector.x, 0, 0);
-   
+
             Vector3 moveForce = Vector3.ClampMagnitude(currentVector, clampDelta);
 
 
             body.AddForce(-moveForce * sensitivity - body.velocity / 5f, ForceMode.VelocityChange);
 
-           
-          
-            
         }
+
         if (Input.GetMouseButtonUp(0))
         {
             rideController.SetInteger("isTilt", (int)isTilt.defaultPosition);
@@ -88,9 +86,9 @@ public class PlayerController : MonoBehaviour
 
     }
 
-  
 
 
-    
+
+
 
 }
