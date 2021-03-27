@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class CollectableObject : MonoBehaviour
 {
-
     public virtual void DisposeObject()
     {
         Destroy(gameObject);
     }
-
-
-
-
 }
 
 
