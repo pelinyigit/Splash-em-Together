@@ -4,15 +4,57 @@ using UnityEngine;
 
 public class SplashablePeople : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+ 
+
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.gameObject.tag=="Player")
+        {
+            foreach(Transform child in other.gameObject.transform)
+            {
+                if(child.tag == "SplashParticle")
+                {
+                    if (child != null)
+                    {
+                        child.gameObject.SetActive(true);
+                    }
+                }
+
+                if(child.tag == "Trail")
+                {
+                    if (child != null)
+                    {
+                        child.gameObject.SetActive(false);
+                    }
+                }
+            }
+           
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit(Collider other)
     {
-        
+        if (other.gameObject.tag == "Player")
+        {
+            foreach (Transform child in other.gameObject.transform)
+            {
+                if (child.tag == "SplashParticle")
+                {
+                    if (child != null)
+                    {
+                        child.gameObject.SetActive(false);
+                    }
+                }
+
+                if (child.tag == "Trail")
+                {
+                    if (child != null)
+                    {
+                        child.gameObject.SetActive(true);
+                    }
+                }
+            }
+        }
     }
+
 }
