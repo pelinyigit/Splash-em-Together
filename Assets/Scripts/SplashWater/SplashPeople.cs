@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SplashPeople : MonoBehaviour
 {
+ 
+    
     bool isPeopleFall;
     [SerializeField] private List<GameObject> peoples;
     private void Start()
@@ -21,7 +23,9 @@ public class SplashPeople : MonoBehaviour
         GetComponentInChildren<Animator>().SetBool("isDead",true);
         isPeopleFall = true;
         Rigidbody rb = GetComponent<Rigidbody>();
-        rb.AddExplosionForce(300f, transform.forward, 300f);
+        //rb.AddExplosionForce(300f, transform.forward, 300f);
+        rb.AddForce(transform.forward * -50f, ForceMode.Force);
+        rb.AddForce(transform.up *100f, ForceMode.Force);
     }
     private void OnParticleCollision()
     {
