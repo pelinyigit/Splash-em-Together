@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -53570,6 +53570,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2314440297007555121, guid: 5cbcb42123f73b648a9170486fc1d98c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ab24f6db9f2ff274f99b3dfec4847e56, type: 2}
     - target: {fileID: 5787909802516722322, guid: 5cbcb42123f73b648a9170486fc1d98c,
         type: 3}
       propertyPath: rideController
