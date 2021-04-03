@@ -30,5 +30,6 @@ public class StackPlayer : MonoBehaviour
     {
         Destroy(bikers[bikers.Count - 1]);
         bikers.Remove(bikers[bikers.Count - 1]);
+        bikerPosition = bikers[bikers.Count - 1].transform;
     }
 }
