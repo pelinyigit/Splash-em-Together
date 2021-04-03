@@ -6,17 +6,9 @@ using DG.Tweening;
 public class PlayerController : MonoBehaviour
 {
 
-    enum isTilt
-    {
-        leftTilt = -1,
-        defaultPosition = 0,
-        rightTilt = 1
-    }
-
     private Rigidbody body;
 
     private Vector3 startMousePosition;
-    private Vector3 endMousePosition;
 
     public float sensitivity = .16f;
     public float clampDelta = 42f;
@@ -25,12 +17,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float bounds = 2.25f;
 
-    [SerializeField]
-    private float speedBounds = 2f;
 
-    public Animator rideController;
 
-    private isTilt tiltState = 0;
 
     private void Awake()
     {
@@ -66,7 +54,6 @@ public class PlayerController : MonoBehaviour
                 EventManager.OnLeftTilt?.Invoke();
             }
 
-            Debug.Log(currentVector.x);
 
             currentVector = new Vector3(currentVector.x, 0, 0);
 
@@ -77,10 +64,7 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        if (Input.GetMouseButtonUp(0))
-        {
-            rideController.SetInteger("isTilt", (int)isTilt.defaultPosition);
-        }
+       
 
         body.velocity.Normalize();
 
