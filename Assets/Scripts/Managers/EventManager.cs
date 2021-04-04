@@ -12,5 +12,7 @@ public class EventManager : MonoBehaviour
     public static UnityEvent OnLeftTilt = new UnityEvent();
     public static UnityEvent OnRightTilt = new UnityEvent();
 
+    public static UnityEvent OnCoinCollected = new UnityEvent();
+
 
 }

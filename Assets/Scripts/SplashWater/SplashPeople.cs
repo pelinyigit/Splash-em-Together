@@ -39,7 +39,12 @@ public class SplashPeople : MonoBehaviour
     private void OnParticleCollision()
     {
         FallenPeople();
-        
+        IncreaseCoin();
+    }
+   
+    public void IncreaseCoin()
+    {
+        EventManager.OnCoinCollected?.Invoke();
     }
 
 }
