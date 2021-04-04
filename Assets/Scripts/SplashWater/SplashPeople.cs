@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class SplashPeople : MonoBehaviour
 {
- 
+
+    GameObject coinParticle;
+    GameObject emojiParticle;
+
     
     bool isPeopleFall;
     [SerializeField] private List<GameObject> peoples;
-    private void Start()
+
+    private void Awake()
     {
-      
+        coinParticle = transform.Find("CoinParticle").gameObject;
+        emojiParticle = transform.Find("EmojiParticle").gameObject;
     }
+
     private void OnParticleTrigger()
     {
         //TO DO: Ragdoll NPC's, People Multiplier Score ++(Random)
@@ -26,11 +32,14 @@ public class SplashPeople : MonoBehaviour
         //rb.AddExplosionForce(300f, transform.forward, 300f);
         rb.AddForce(transform.forward * -50f, ForceMode.Force);
         rb.AddForce(transform.up *100f, ForceMode.Force);
+
+        coinParticle.SetActive(true);
+        emojiParticle.SetActive(true);
     }
     private void OnParticleCollision()
     {
         FallenPeople();
-        Debug.Log("Fallen People");
+        
     }
 
 }

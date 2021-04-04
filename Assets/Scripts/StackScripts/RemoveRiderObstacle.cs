@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class RemoveRiderObstacle : CollectableObject
 {
+    public ParticleSystem removeParticle;
+
       private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<PlayerController>())
+        if (other.gameObject.tag=="Player")
         {
             EventManager.OnBikeRemoved?.Invoke();
+            removeParticle.Play();
+
         }
     }
 }

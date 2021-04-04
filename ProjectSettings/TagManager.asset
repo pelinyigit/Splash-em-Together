@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SplashParticle
   - Trail
+  - coinParticle
   layers:
   - Default
   - TransparentFX
