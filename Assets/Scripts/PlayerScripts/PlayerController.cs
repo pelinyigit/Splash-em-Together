@@ -17,56 +17,70 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float bounds = 2.25f;
 
-
+  
 
 
     private void Awake()
     {
         body = GetComponent<Rigidbody>();
 
+
     }
     private void Update()
     {
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, -bounds, bounds), transform.position.y, transform.position.z);
-
+       
+        if (Input.GetMouseButtonDown(0) && GameManager.instance.currentState == GameManager.GameState.DefaultGameState)
+        {
+            startMousePosition = Input.mousePosition;
+            EventManager.OnGameStarted?.Invoke();
+        }
     }
 
     private void FixedUpdate()
     {
-        body.transform.position += Vector3.forward * speed;
-
-        if (Input.GetMouseButtonDown(0))
+        if (GameManager.instance.currentState == GameManager.GameState.StartGameState)
         {
-            startMousePosition = Input.mousePosition;
-        }
 
-        if (Input.GetMouseButton(0))
-        {
-            Vector3 currentVector = startMousePosition - Input.mousePosition;
-            startMousePosition = Input.mousePosition;
+            body.transform.position += Vector3.forward * speed;
 
-            if (currentVector.x < 0)
+            if (Input.GetMouseButtonDown(0))
             {
-                EventManager.OnRightTilt?.Invoke();
-            }
-            if (currentVector.x > 0)
-            {
-                EventManager.OnLeftTilt?.Invoke();
+                startMousePosition = Input.mousePosition;
             }
 
+            if (Input.GetMouseButton(0))
+            {
+                Vector3 currentVector = startMousePosition - Input.mousePosition;
+                startMousePosition = Input.mousePosition;
 
-            currentVector = new Vector3(currentVector.x, 0, 0);
+                if (currentVector.x < 0)
+                {
+                    EventManager.OnRightTilt?.Invoke();
+                }
+                if (currentVector.x > 0)
+                {
+                    EventManager.OnLeftTilt?.Invoke();
+                }
 
-            Vector3 moveForce = Vector3.ClampMagnitude(currentVector, clampDelta);
+
+                currentVector = new Vector3(currentVector.x, 0, 0);
+
+                Vector3 moveForce = Vector3.ClampMagnitude(currentVector, clampDelta);
 
 
-            body.AddForce(-moveForce * sensitivity - body.velocity / 5f, ForceMode.VelocityChange);
+                body.AddForce(-moveForce * sensitivity - body.velocity / 5f, ForceMode.VelocityChange);
+
+            }
+
+
+
+            body.velocity.Normalize();
 
         }
 
        
 
-        body.velocity.Normalize();
 
     }
 

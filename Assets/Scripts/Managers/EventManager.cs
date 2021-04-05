@@ -14,5 +14,10 @@ public class EventManager : MonoBehaviour
 
     public static UnityEvent OnCoinCollected = new UnityEvent();
 
+    public static UnityEvent OnFinished = new UnityEvent();
+    public static UnityEvent OnGameOver = new UnityEvent();
+    public static UnityEvent OnGameStarted = new UnityEvent();
+    public static UnityEvent OnGamePaused = new UnityEvent();
+
 
 }

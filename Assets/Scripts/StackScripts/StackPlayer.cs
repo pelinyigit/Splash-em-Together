@@ -28,8 +28,17 @@ public class StackPlayer : MonoBehaviour
     }
     void RemoveBiker()
     {
-        Destroy(bikers[bikers.Count - 1]);
-        bikers.Remove(bikers[bikers.Count - 1]);
-        bikerPosition = bikers[bikers.Count - 1].transform;
+        if (bikers.Count - 1 >= 1)
+        {
+            Destroy(bikers[bikers.Count - 1]);
+            bikers.Remove(bikers[bikers.Count - 1]);
+            bikerPosition = bikers[bikers.Count - 1].transform;
+        }
+        else
+        {
+            EventManager.OnGameOver?.Invoke();
+            //TO DO: crash particle and stop player
+        }
+        
     }
 }

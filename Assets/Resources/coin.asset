@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: coin
   m_EditorClassIdentifier: 
   name: coin
-  coinAmount: 3009
+  coinAmount: 296
