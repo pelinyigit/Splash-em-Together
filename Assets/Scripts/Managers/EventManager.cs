@@ -13,11 +13,15 @@ public class EventManager : MonoBehaviour
     public static UnityEvent OnRightTilt = new UnityEvent();
 
     public static UnityEvent OnCoinCollected = new UnityEvent();
+    public static UnityEvent OnCoinUnclaimed = new UnityEvent();
 
     public static UnityEvent OnFinished = new UnityEvent();
     public static UnityEvent OnGameOver = new UnityEvent();
     public static UnityEvent OnGameStarted = new UnityEvent();
     public static UnityEvent OnGamePaused = new UnityEvent();
+
+    public static UnityEvent OnCurrentLevel = new UnityEvent();
+    public static UnityEvent OnNextLevel = new UnityEvent();
 
 
 }
