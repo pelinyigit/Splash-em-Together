@@ -23,5 +23,10 @@ public class EventManager : MonoBehaviour
     public static UnityEvent OnCurrentLevel = new UnityEvent();
     public static UnityEvent OnNextLevel = new UnityEvent();
 
+    public static UnityEvent OnAnimationCollected = new UnityEvent();
+    public static UnityEvent OnCollisionFinish = new UnityEvent();
+
+    public static UnityEvent OnTimelineOpened = new UnityEvent();
+
 
 }

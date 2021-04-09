@@ -11,12 +11,14 @@ public class StackPlayer : MonoBehaviour
     {
         EventManager.OnBikeCollected.AddListener(AddBiker);
         EventManager.OnBikeRemoved.AddListener(RemoveBiker);
+        EventManager.OnCollisionFinish.AddListener(RemoveFinalBiker);
     }
 
     private void OnDisable()
     {
         EventManager.OnBikeCollected.RemoveListener(AddBiker);
         EventManager.OnBikeRemoved.RemoveListener(RemoveBiker);
+        EventManager.OnCollisionFinish.RemoveListener(RemoveFinalBiker);
     }
 
     void AddBiker()
@@ -41,4 +43,25 @@ public class StackPlayer : MonoBehaviour
         }
         
     }
+
+    void RemoveFinalBiker()
+    {
+        if (bikers.Count - 1 >= 1)
+        {
+            Destroy(bikers[bikers.Count - 1]);
+            bikers.Remove(bikers[bikers.Count - 1]);
+            bikerPosition = bikers[bikers.Count - 1].transform;
+            EventManager.OnAnimationCollected?.Invoke();
+        }
+        else
+        {
+            EventManager.OnAnimationCollected?.Invoke();
+            EventManager.OnTimelineOpened?.Invoke();
+            EventManager.OnFinished?.Invoke();
+            bikers[bikers.Count - 1].SetActive(false);
+            
+        }
+    }
+
+    
 }
