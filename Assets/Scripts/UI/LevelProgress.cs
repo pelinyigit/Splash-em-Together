@@ -41,7 +41,5 @@ public class LevelProgress : MonoBehaviour
         currentDistance = finishPosition - playerPosition;
         progress = (totalDistance - currentDistance) / totalDistance;
         fillImage.fillAmount = progress;
-        
-
     }
 }

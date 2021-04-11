@@ -32,8 +32,7 @@ public class GameManager : MonoBehaviour
         EventManager.OnGameStarted.AddListener(StartGame);
         EventManager.OnGamePaused.AddListener(PauseGame);
         EventManager.OnGameOver.AddListener(GameOver);
-        EventManager.OnFinished.AddListener(FinishGame);
-       
+        EventManager.OnFinished.AddListener(FinishGame);      
     }
 
     private void OnDisable()
@@ -103,41 +102,26 @@ public class GameManager : MonoBehaviour
                 failCanvas.SetActive(false);
                 successCanvas.SetActive(true);
                 break;
-
-
-
         }
-
     }
 
     public void StartGame()
     {
         currentState = GameState.StartGameState;
         Time.timeScale = 1;
-        
-        Debug.Log("Game Started!");
-
-
     }
     public void PauseGame()
     {
-        currentState = GameState.PauseGameState;
-        
+        currentState = GameState.PauseGameState;   
         Time.timeScale = 0;
-        Debug.Log("Game Paused!");
     }
     public void GameOver()
     {
         currentState = GameState.GameOverState;
-        //TO DO:
-        Debug.Log("Game over !");
     }
     public void FinishGame()
     {
         currentState = GameState.FinishGameState;
-        //TO DO:
-        Debug.Log("game finished");
-
     }
 
 

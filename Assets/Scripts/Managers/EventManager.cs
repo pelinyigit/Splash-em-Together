@@ -28,5 +28,4 @@ public class EventManager : MonoBehaviour
 
     public static UnityEvent OnTimelineOpened = new UnityEvent();
 
-
 }

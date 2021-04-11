@@ -8,12 +8,11 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
 
     public int level;
+
     void Awake()
     {
-        //PlayerPrefs.DeleteAll();
         if (instance == null)
         {
-           // DontDestroyOnLoad(this.gameObject);
             instance = this;
         }
         else if (instance != null)
@@ -27,7 +26,6 @@ public class LevelManager : MonoBehaviour
     {
         level = PlayerPrefs.GetInt("C_Level") ;
         Debug.Log(level);
-        //SceneManager.LoadScene(level);
     }
 
     private void OnEnable()
@@ -41,7 +39,6 @@ public class LevelManager : MonoBehaviour
         EventManager.OnCurrentLevel.RemoveListener(GetLevel);
         EventManager.OnNextLevel.RemoveListener(NextLevel);
     }
-
 
     public void GetLevel()
     {

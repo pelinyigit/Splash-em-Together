@@ -41,7 +41,6 @@ public class StackPlayer : MonoBehaviour
         else
         {
             EventManager.OnGameOver?.Invoke();
-            //TO DO: crash particle and stop player
         }
         
     }

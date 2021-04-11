@@ -10,10 +10,8 @@ public class MainMenuLoading : MonoBehaviour
     private Image progressBar;
 
     private void Start()
-    {
-        
-        StartCoroutine(LoadAsyncOperation());
-       
+    {   
+        StartCoroutine(LoadAsyncOperation()); 
     }
 
     IEnumerator LoadAsyncOperation()
@@ -39,9 +37,6 @@ public class MainMenuLoading : MonoBehaviour
                 progressBar.fillAmount = gameLevel.progress;
                 yield return new WaitForEndOfFrame();
             }
-        }
-       
-
-        
+        }     
     }
 }

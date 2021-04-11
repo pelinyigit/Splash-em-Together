@@ -8,11 +8,12 @@ public class UIManager : MonoBehaviour
 {
     public Text coinText;
     public Text rewardText;
+    public ResourcesCoin resourcesCoin;
 
     private GameObject LevelProgressTextObject;
     private Text levelProgressText;
 
-    public ResourcesCoin resourcesCoin;
+
 
     private void Awake()
     {
@@ -34,10 +35,9 @@ public class UIManager : MonoBehaviour
 
     public void LevelFailSkip()
     {
-        //TO DO: Ad Watch
+        //TO DO: Ad Watched
         EventManager.OnNextLevel?.Invoke();
         EventManager.OnCoinUnclaimed?.Invoke();
-
     }
 
     public void LevelFailRestart()
@@ -54,8 +54,7 @@ public class UIManager : MonoBehaviour
     public void LevelSuccessNext()
     {
         EventManager.OnCoinUnclaimed?.Invoke();
-        EventManager.OnNextLevel?.Invoke();
-       
+        EventManager.OnNextLevel?.Invoke();  
     }
 
     public void OpenPause()
